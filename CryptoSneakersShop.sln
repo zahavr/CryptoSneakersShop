@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoSneakersShop.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoSneakersShop.IntegrationTests", "CryptoSneakersShop.IntegrationTests\CryptoSneakersShop.IntegrationTests.csproj", "{9C928250-6E75-4472-9ABB-6AC7EB0F22B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoSneakersShop.API.Contracts", "CryptoSneakersShop.API.Contracts\CryptoSneakersShop.API.Contracts.csproj", "{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{9C928250-6E75-4472-9ABB-6AC7EB0F22B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C928250-6E75-4472-9ABB-6AC7EB0F22B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C928250-6E75-4472-9ABB-6AC7EB0F22B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BB3B77E3-C4ED-47B0-BDF9-ED8D6842F179} = {9CF0A5DF-DA1A-4709-BAF5-074E61E14D97}
@@ -67,5 +73,6 @@ Global
 		{21C09C04-D196-4D32-BFCE-D2FF52EA9219} = {791CAEE9-8F35-46C6-8804-94D82506C8A2}
 		{8FE0C275-5363-442C-BA90-9267CCBC9128} = {791CAEE9-8F35-46C6-8804-94D82506C8A2}
 		{9C928250-6E75-4472-9ABB-6AC7EB0F22B0} = {791CAEE9-8F35-46C6-8804-94D82506C8A2}
+		{F7CD7DFF-4845-4F9F-8E81-98F3C1B7356D} = {791CAEE9-8F35-46C6-8804-94D82506C8A2}
 	EndGlobalSection
 EndGlobal
