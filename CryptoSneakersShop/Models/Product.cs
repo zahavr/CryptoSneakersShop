@@ -2,7 +2,7 @@ using CryptoSneakersShop.Abstractions.Models;
 
 namespace CryptoSneakersShop.Models;
 
-internal class Product : IProduct
+public class Product : IProduct
 {
     public string Id { get; }
     

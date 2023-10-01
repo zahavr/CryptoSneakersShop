@@ -3,7 +3,7 @@ using CryptoSneakersShop.API.Configuration;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.RegisterServices();
+builder.RegisterBuilder();
 
 var app = builder.Build();
 

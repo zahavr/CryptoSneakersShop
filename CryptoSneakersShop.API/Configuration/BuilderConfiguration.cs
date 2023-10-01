@@ -1,15 +1,23 @@
+using CryptoSneakersShop.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CryptoSneakersShop.API.Configuration;
 
-public static class ServiceConfiguration
+public static class BuilderConfiguration
 {
-    public static WebApplicationBuilder RegisterServices(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder RegisterBuilder(this WebApplicationBuilder builder)
     {
         builder.Services.AddControllers();
+        builder.Services.AddRouting(opt =>
+        {
+            opt.LowercaseUrls = true;
+            opt.LowercaseQueryStrings = true;
+        });
+        
         builder.Services.AddEndpointsApiExplorer();
         
         builder.Services.AddApiVersioning(opt =>
@@ -29,8 +37,9 @@ public static class ServiceConfiguration
             setup.SubstituteApiVersionInUrl = true;
         });
         
-        
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddServices();
 
         return builder;
     }

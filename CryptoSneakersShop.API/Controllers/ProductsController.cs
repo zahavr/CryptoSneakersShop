@@ -1,4 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using CryptoSneakersShop.Abstractions.Models;
+using CryptoSneakersShop.Abstractions.Services;
+using CryptoSneakersShop.API.Contracts.Responses;
+using CryptoSneakersShop.API.Extensions;
+using CryptoSneakersShop.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoSneakersShop.API.Controllers;
@@ -7,35 +12,52 @@ namespace CryptoSneakersShop.API.Controllers;
 [Route("api/v{version:apiVersion}/[controller]")]
 public class ProductsController : BaseController
 {
-    [HttpGet]
-    public async Task<IReadOnlyList<string>> GetMany()
+    private readonly IProductService _productService;
+
+    public ProductsController(IProductService productService)
     {
-        return await Task.FromResult(new[] { "My Strings" });
+        _productService = productService;
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetMany()
+    {
+        IReadOnlyCollection<IProduct> products = await _productService.GetManyAsync();
+        IEnumerable<ProductResponse> response = products.Select(product => product.ToResponse());
+        
+        return Ok(response);
     }
 
     [HttpGet("{productId}")]
-    public async Task<string> Get([FromRoute] [Required] string productId)
+    public async Task<IActionResult> Get([FromRoute][Required] string productId)
     {
-        return await Task.FromResult(productId);
+        IProduct product = await _productService.GetAsync(productId);
+        ProductResponse response = product.ToResponse();
+        return Ok(response);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] string request)
+    public async Task<IActionResult> Create([FromBody]ProductCreate request)
     {
-        return Created(new Uri($"api/v1.0/Products/asd"), string.Empty);
+        IProduct product = await _productService.CreateAsync(request);
+        ProductResponse response = product.ToResponse();
+        return Created($"api/v1.0/products/{response.Id}", response);
     }
 
     [HttpPut("{productId}")]
     public async Task<IActionResult> Edit(
         [FromRoute] [Required] string productId,
-        [FromBody] string request)
+        [FromBody] ProductEdite request)
     {
+        var product = request.ToModel(productId);
+        await _productService.EditAsync(product);
         return NoContent();
     }
 
     [HttpDelete("{productId}")]
-    public async Task<IActionResult> Delete(string request)
+    public async Task<IActionResult> Delete(string productId)
     {
+        await _productService.DeleteAsync(productId);
         return NoContent();
     }
 }
