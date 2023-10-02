@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  CryptoSneakersShop.API:
+    image: ${DOCKER_REGISTRY-}sneakersshop:v1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=qwer1234
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/cryptosneakersshop.pfx
+    ports:
+      - "8081:80"
+      - "8082:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  mssql:
+    image:  mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    volumes:
+      - ~/apps/mssql/data:/var/lib/mssqlql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mssql1Ipw
