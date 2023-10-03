@@ -9,4 +9,6 @@ public interface IProduct
     string Description { get; }
     
     decimal Price { get; }
+    
+    ICategory Category { get; }
 }

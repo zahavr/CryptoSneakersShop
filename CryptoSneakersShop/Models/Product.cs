@@ -12,15 +12,19 @@ public class Product : IProduct
     
     public decimal Price { get; }
     
+    public ICategory Category { get; }
+
     public Product(
         string id,
         string name,
         string description,
-        decimal price)
+        decimal price,
+        Category category)
     {
         Id = id;
         Name = name;
         Description = description;
         Price = price;
+        Category = category;
     }
 }

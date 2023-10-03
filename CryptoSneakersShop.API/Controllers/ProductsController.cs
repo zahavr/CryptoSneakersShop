@@ -1,15 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using CryptoSneakersShop.Abstractions.Models;
 using CryptoSneakersShop.Abstractions.Services;
+using CryptoSneakersShop.API.Contracts.Requests;
 using CryptoSneakersShop.API.Contracts.Responses;
 using CryptoSneakersShop.API.Extensions;
-using CryptoSneakersShop.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoSneakersShop.API.Controllers;
 
 [ApiVersion("1.0")]
-[Route("api/v{version:apiVersion}/[controller]")]
 public class ProductsController : BaseController
 {
     private readonly IProductService _productService;
@@ -37,7 +36,7 @@ public class ProductsController : BaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody]ProductCreate request)
+    public async Task<IActionResult> Create([FromBody] ProductCreateRequest request)
     {
         IProduct product = await _productService.CreateAsync(request);
         ProductResponse response = product.ToResponse();
@@ -45,12 +44,12 @@ public class ProductsController : BaseController
     }
 
     [HttpPut("{productId}")]
-    public async Task<IActionResult> Edit(
+    public async Task<IActionResult> Edite(
         [FromRoute] [Required] string productId,
-        [FromBody] ProductEdite request)
+        [FromBody] ProductEditeRequest request)
     {
         var product = request.ToModel(productId);
-        await _productService.EditAsync(product);
+        await _productService.EditeAsync(product);
         return NoContent();
     }
 

@@ -12,7 +12,8 @@ internal static class ProductsExtensions
             product.Id,
             product.Name,
             product.Description,
-            product.Price);
+            product.Price,
+            product.Category);
     }
 
     public static IProductEdite ToModel(this IProductEdite request, string productId)
@@ -21,6 +22,7 @@ internal static class ProductsExtensions
             productId,
             request.Name,
             request.Description,
-            request.Price);
+            request.Price,
+            request.Category);
     }
 }

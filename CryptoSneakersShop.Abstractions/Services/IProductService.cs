@@ -10,7 +10,7 @@ public interface IProductService
 
     Task<IProduct> CreateAsync(IProductCreate request);
 
-    Task EditAsync(IProductEdite request);
+    Task EditeAsync(IProductEdite request);
 
     Task DeleteAsync(string id);
 }

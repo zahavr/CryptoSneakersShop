@@ -7,4 +7,6 @@ public interface IProductCreate
     string Description { get; }
     
     decimal Price { get; }
+    
+    ICategoryCreate Category{ get; }
 }
