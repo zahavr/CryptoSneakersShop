@@ -21,26 +21,26 @@ public class CategoriesController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetMany()
     {
-        IReadOnlyCollection<ICategory> products = await _categoryService.GetManyAsync();
-        IEnumerable<CategoryResponse> response = products.Select(product => product.ToResponse());
+        IReadOnlyCollection<ICategory> categories = await _categoryService.GetManyAsync();
+        IEnumerable<CategoryResponse> response = categories.Select(category => category.ToResponse());
         
         return Ok(response);
     }
 
     [HttpGet("{categoryId}")]
-    public async Task<IActionResult> Get([FromRoute][Required] string productId)
+    public async Task<IActionResult> Get([FromRoute][Required] string categoryId)
     {
-        ICategory product = await _categoryService.GetAsync(productId);
-        CategoryResponse response = product.ToResponse();
+        ICategory category = await _categoryService.GetAsync(categoryId);
+        CategoryResponse response = category.ToResponse();
         return Ok(response);
     }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CategoryCreateRequest request)
     {
-        ICategory product = await _categoryService.CreateAsync(request);
-        CategoryResponse response = product.ToResponse();
-        return Created($"api/v1.0/products/{response.Id}", response);
+        ICategory category = await _categoryService.CreateAsync(request);
+        CategoryResponse response = category.ToResponse();
+        return Created($"api/v1.0/categories/{response.Id}", response);
     }
 
     [HttpPut("{categoryId}")]
