@@ -13,10 +13,10 @@ internal static class CategoriesExtensions
             category.Name);
     }
 
-    public static ICategoryEdite ToModel(this ICategoryEdite request, string productId)
+    public static ICategoryEdite ToModel(this ICategoryEdite request, string categoryId)
     {
         return new CategoryEdite(
-            productId,
+            categoryId,
             request.Name);
     }
 }
