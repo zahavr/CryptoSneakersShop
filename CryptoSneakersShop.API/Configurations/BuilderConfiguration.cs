@@ -39,7 +39,10 @@ public static class BuilderConfiguration
         
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddServices();
+        builder.Services
+            .AddServices()
+            .AddConfigurations();
+        
 
         return builder;
     }

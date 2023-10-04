@@ -4,7 +4,9 @@ using CryptoSneakersShop.Abstractions.Services;
 using CryptoSneakersShop.API.Contracts.Requests;
 using CryptoSneakersShop.API.Contracts.Responses;
 using CryptoSneakersShop.API.Extensions;
+using CryptoSneakersShop.API.Options;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace CryptoSneakersShop.API.Controllers;
 
@@ -13,7 +15,8 @@ public class ProductsController : BaseController
 {
     private readonly IProductService _productService;
 
-    public ProductsController(IProductService productService)
+    public ProductsController(
+        IProductService productService)
     {
         _productService = productService;
     }

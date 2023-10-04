@@ -19,7 +19,13 @@
     <ItemGroup>
       <ProjectReference Include="..\CryptoSneakersShop.API.Contracts\CryptoSneakersShop.API.Contracts.csproj" />
       <ProjectReference Include="..\CryptoSneakersShop\CryptoSneakersShop.csproj" />
+
+
+
     </ItemGroup>
+
+
+
 
 
 
