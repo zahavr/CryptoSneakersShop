@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CryptoSneakersShop.Abstractions\CryptoSneakersShop.Abstractions.csproj" />
+      <ProjectReference Include="..\CryptoSneakersShop.Infrastructure\CryptoSneakersShop.Infrastructure.csproj" />
     </ItemGroup>
 
 

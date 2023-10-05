@@ -5,7 +5,6 @@ namespace CryptoSneakersShop.API.Options.Setup;
 
 public class ConnectionsOptionsSetup : IConfigureOptions<ConnectionsOptions>
 {
-    private const string SectionName = "Connections";
     private readonly IConfiguration _configuration;
 
     public ConnectionsOptionsSetup(IConfiguration configuration)
@@ -16,7 +15,7 @@ public class ConnectionsOptionsSetup : IConfigureOptions<ConnectionsOptions>
     public void Configure(ConnectionsOptions options)
     {
         _configuration
-            .GetSection(SectionName)
+            .GetSection(ConnectionsOptions.Key)
             .Bind(options);
     }
 }

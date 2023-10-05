@@ -1,4 +1,6 @@
-using CryptoSneakersShop.API.Configuration;
+
+
+using CryptoSneakersShop.API.Configurations;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

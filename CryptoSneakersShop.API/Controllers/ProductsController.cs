@@ -5,6 +5,7 @@ using CryptoSneakersShop.API.Contracts.Requests;
 using CryptoSneakersShop.API.Contracts.Responses;
 using CryptoSneakersShop.API.Extensions;
 using CryptoSneakersShop.API.Options;
+using CryptoSneakersShop.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -14,16 +15,20 @@ namespace CryptoSneakersShop.API.Controllers;
 public class ProductsController : BaseController
 {
     private readonly IProductService _productService;
+    private readonly ApplicationDbContext _dbContext;
 
     public ProductsController(
-        IProductService productService)
+        IProductService productService,
+        ApplicationDbContext dbContext)
     {
         _productService = productService;
+        _dbContext = dbContext;
     }
     
     [HttpGet]
     public async Task<IActionResult> GetMany()
     {
+        var a = _dbContext;
         IReadOnlyCollection<IProduct> products = await _productService.GetManyAsync();
         IEnumerable<ProductResponse> response = products.Select(product => product.ToResponse());
         

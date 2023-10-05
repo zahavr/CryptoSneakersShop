@@ -1,11 +1,11 @@
+using CryptoSneakersShop.API.Extensions;
 using CryptoSneakersShop.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CryptoSneakersShop.API.Configuration;
+namespace CryptoSneakersShop.API.Configurations;
 
 public static class BuilderConfiguration
 {
@@ -38,12 +38,14 @@ public static class BuilderConfiguration
         });
         
         builder.Services.AddSwaggerGen();
+        builder.Services.AddOptions();
 
         builder.Services
             .AddServices()
-            .AddConfigurations();
-        
+            .AddConfigurations()
+            .AddEntityFramework(builder.Services.BuildServiceProvider());
 
+        
         return builder;
     }
 }
